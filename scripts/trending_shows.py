@@ -3,6 +3,7 @@ Add the top 10 trending shows to a channel on dizqueTV
 Refreshes the channel (removes all existing programs, re-adds new items)
 """
 
+import os
 from typing import List, Union
 import argparse
 
@@ -11,15 +12,15 @@ from plexapi import server, video
 from dizqueTV import API
 
 # COMPLETE THESE SETTINGS
-DIZQUETV_URL = "http://localhost:8000"
+DIZQUETV_URL = os.getenv('DIZQUETV_URL', "http://localhost:8000")
 
-PLEX_URL = "http://localhost:32400"
-PLEX_TOKEN = "thisisaplextoken"
+PLEX_URL = os.getenv('PLEX_URL', "http://localhost:32400")
+PLEX_TOKEN = os.getenv('PLEX_TOKEN', "thisisaplextoken")
 
 # Make a Trakt application: https://trakt.tv/oauth/applications
 # Use redirect URI: urn:ietf:wg:oauth:2.0:oob
-TRAKT_CLIENT_ID = "traktclientid"
-TRAKT_CLIENT_SECRET = "traktclientsecret"
+TRAKT_CLIENT_ID = os.getenv('TRAKT_CLIENT_ID', "traktclientid")
+TRAKT_CLIENT_SECRET = os.getenv('TRAKT_CLIENT_SECRET', "traktclientsecret")
 
 
 parser = argparse.ArgumentParser()
